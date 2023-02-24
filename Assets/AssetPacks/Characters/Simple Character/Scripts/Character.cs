@@ -24,7 +24,7 @@ public class Character : MonoBehaviour
 
 	private void Awake()
 	{
-		animator = GetComponent<Animator>();
+		animator = GetComponentInChildren<Animator>();
 
 		rigidbody = GetComponent<Rigidbody>();
 		rigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;

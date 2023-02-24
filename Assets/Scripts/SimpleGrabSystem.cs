@@ -4,21 +4,16 @@ using UnityEngine;
 /// </summary>
 public class SimpleGrabSystem : MonoBehaviour
 {
-    // Reference to the character camera.
-    [SerializeField]
-    private Camera characterCamera;
     public char[] keybind = new char[5];
     // Reference to the slot for holding picked item.
     [SerializeField]
     private Transform slot;
     // Reference to the currently held item.
     private PickableItem pickedItem;
-    /// <summary>
-    /// Method called very frame.
-    /// </summary>
+
     private void Update()
     {
-        if (slot.transform.childCount ==1)
+        if (slot.transform.childCount == 1)
         {
             if (Input.GetKeyDown(keybind[0].ToString()))
             {
@@ -46,8 +41,6 @@ public class SimpleGrabSystem : MonoBehaviour
         
 
     }
-
-
 
     private void OnTriggerEnter(Collider other)
     {

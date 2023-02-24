@@ -29,12 +29,9 @@ public class Ball : MonoBehaviour
         text.text = "Score: " + score.ToString();
         if (Input.GetKeyDown(newKeyBind.keybind[3].ToString()) && counter ==0)
         {
-
-                Basketball = Instantiate(myPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
-                Basketball.name = "Basketball";
-                counter=1;
-                
-
+            Basketball = Instantiate(myPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+            Basketball.name = "Basketball";
+            counter=1;
         }
         if (Input.GetKeyDown(newKeyBind.keybind[4].ToString()) && counter == 1) {
             Destroy(Basketball);
@@ -46,11 +43,10 @@ public class Ball : MonoBehaviour
      
     private void OnTriggerEnter(Collider other)
     {
-        score = score + 1;
+        score++;
         if (other.name == Basketball.name) {
             Destroy(Basketball);
             counter = 0;
-        
         }
 
     }

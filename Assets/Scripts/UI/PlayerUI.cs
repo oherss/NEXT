@@ -12,7 +12,7 @@ public class PlayerUI : MonoBehaviour
     //CACHED REFERENCES
     GameObject mainMenu;
     GameObject pathfindingMenu;
-    GameObject uNGoalMenu;
+    GameObject floorMarkerUI;
     public FloorMarker playerFloorMarker;
 
 
@@ -22,7 +22,7 @@ public class PlayerUI : MonoBehaviour
     //STATES
     bool pathfindingMenuActive = false;
     bool mainMenuActive = false;
-    bool uNGoalMenuActive = false;
+    bool floorMarkerUIActive = false;
     bool questDialogueActive = false;
 
 
@@ -47,7 +47,7 @@ public class PlayerUI : MonoBehaviour
     {
         mainMenu = GameObject.FindWithTag("Main Menu");
         pathfindingMenu = GameObject.FindWithTag("Pathfinding Menu");
-        uNGoalMenu = GameObject.FindWithTag("UN Goal");
+        floorMarkerUI = GameObject.FindWithTag("UN Goal");
 
         SetUIActive();
         ResetQuestUI();
@@ -59,8 +59,8 @@ public class PlayerUI : MonoBehaviour
         else { Debug.LogError("Main menu is not assigned"); }
         if (pathfindingMenu) { pathfindingMenu.SetActive(false); }
         else { Debug.LogError("Pathfinding menu is not assigned"); }
-        if (uNGoalMenu) { uNGoalMenu.SetActive(false); }
-        else { Debug.LogError("UN goal menu is not assigned"); }
+        if (floorMarkerUI) { floorMarkerUI.SetActive(false); }
+        else { Debug.LogError("Floor marker menu is not assigned"); }
         if(dialogueUI) { dialogueUI.SetActive(false); }
         else { Debug.LogError("Dialogue field is not assigned"); }
 
@@ -72,17 +72,17 @@ public class PlayerUI : MonoBehaviour
         {
             SetPathfindingMenuActive();
             if (mainMenuActive) { SetMainMenuActive(); }
-            if (uNGoalMenuActive) { SetUNGoalMenu(); }
+            if (floorMarkerUIActive) { SetfloorMarkerUI(); }
         }
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             SetMainMenuActive();
             if (pathfindingMenuActive) { SetPathfindingMenuActive(); }
-            if (uNGoalMenuActive) { SetUNGoalMenu(); }
+            if (floorMarkerUIActive) { SetfloorMarkerUI(); }
         }
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            SetUNGoalMenu();
+            SetfloorMarkerUI();
             if (pathfindingMenuActive) { SetPathfindingMenuActive(); }
             if (mainMenuActive) { SetMainMenuActive(); }
         }
@@ -100,14 +100,14 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-    private void SetUNGoalMenu()
+    private void SetfloorMarkerUI()
     {
         if (playerFloorMarker)
         {
-            uNGoalMenuActive = !uNGoalMenuActive;
-            uNGoalMenu.SetActive(uNGoalMenuActive);
-            Text text = uNGoalMenu.GetComponentInChildren<Text>();
-            Image background = uNGoalMenu.GetComponentInChildren<Image>();
+            floorMarkerUIActive = !floorMarkerUIActive;
+            floorMarkerUI.SetActive(floorMarkerUIActive);
+            Text text = floorMarkerUI.GetComponentInChildren<Text>();
+            Image background = floorMarkerUI.GetComponentInChildren<Image>();
             text.text = playerFloorMarker.GetInfoText();
             Color color = playerFloorMarker.GetColor();
             color.a = uIOpaqueLevel;
@@ -195,8 +195,8 @@ public class PlayerUI : MonoBehaviour
         if (other.GetComponent<FloorMarker>())
         {
             playerFloorMarker = null;
-            uNGoalMenuActive = false;
-            uNGoalMenu.SetActive(false);
+            floorMarkerUIActive = false;
+            floorMarkerUI.SetActive(false);
         }
         if (other.GetComponent<QuestGiver>())
         {

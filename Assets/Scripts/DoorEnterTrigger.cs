@@ -5,27 +5,8 @@ using UnityEngine.EventSystems;
 
 public class DoorEnterTrigger : MonoBehaviour
 {
-    Camera cam;
-    Vector3 pos = new Vector3(200, 200, 0);
-    
-
-
-    void Start()
-    {
-        cam = GetComponent<Camera>();
-
-        gameObject.tag = "Player";
-        
-    }
-
     void Update()
     {
-
-        if (true)
-        {
-
-        }
-
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -47,10 +28,6 @@ public class DoorEnterTrigger : MonoBehaviour
         {
             other.gameObject.GetComponent<Animator>().Play("DoorOpenAnimation", 0, 0.0f);
         }
-
-      
-
-        //other.GetComponent<TriggerDoorController>().changeBool();
     }
 
     private void OnTriggerExit(Collider other)
@@ -59,9 +36,6 @@ public class DoorEnterTrigger : MonoBehaviour
         {
             other.GetComponent<Animator>().Play("doorClose", 0, 0.0f);
         }
-        
-
     }
-
 }
 

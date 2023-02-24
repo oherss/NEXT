@@ -11,11 +11,6 @@ public class CameraBehavior : MonoBehaviour
     public GameObject text;
     public GameObject ball;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         if(Vector3.Distance(player.transform.position, newCam.transform.position) < 1.85)
