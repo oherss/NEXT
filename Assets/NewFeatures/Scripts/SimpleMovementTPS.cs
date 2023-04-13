@@ -32,6 +32,7 @@ public class SimpleMovementTPS : MonoBehaviour
     {
         controller = gameObject.GetComponent<CharacterController>();
 
+        Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
     }
 
